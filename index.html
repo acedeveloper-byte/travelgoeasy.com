@@ -15,6 +15,7 @@
   --bg:#f5f7fa;
 }
 *{box-sizing:border-box}
+html{scroll-behavior:smooth}
 body{
   margin:0;
   font-family:system-ui,-apple-system,Segoe UI,Arial,sans-serif;
@@ -45,15 +46,63 @@ header{
   color:var(--accent);
   font-size:1.15rem;
 }
-.header-link{
+.header-nav{
+  display:flex;
+  align-items:center;
+  gap:20px;
+  flex-wrap:wrap;
+}
+.header-nav a{
   color:var(--accent);
   font-size:.9rem;
   font-weight:600;
   text-decoration:none;
 }
-.header-link:hover{
+.header-nav a:hover{
   text-decoration:underline;
 }
+
+/* DOCUMENT DROPDOWN */
+.dropdown{
+  position:relative;
+}
+.dropdown summary{
+  color:var(--accent);
+  font-size:.9rem;
+  font-weight:600;
+  cursor:pointer;
+  list-style:none;
+}
+.dropdown summary::-webkit-details-marker{
+  display:none;
+}
+.dropdown summary::after{
+  content:" ▾";
+}
+.dropdown-menu{
+  position:absolute;
+  top:100%;
+  right:0;
+  width:230px;
+  padding:12px;
+  background:white;
+  border:1px solid #e6ebf0;
+  border-radius:10px;
+  box-shadow:0 10px 30px #14273d20;
+  z-index:100;
+}
+.dropdown-menu a{
+  display:block;
+  padding:8px 12px;
+  border-radius:5px;
+  color:var(--ink);
+  font-size:.85rem;
+}
+.dropdown-menu a:hover{
+  background:#edf4fc;
+  text-decoration:none;
+}
+
 .hero{
   background:linear-gradient(125deg,var(--accent),#172d4a);
   color:white;
@@ -75,12 +124,16 @@ h1{
   max-width:650px;
   opacity:.9;
 }
-main{padding:58px 0 80px}
+main{
+  padding:58px 0 80px;
+}
 .intro{
   max-width:720px;
   margin-bottom:30px;
 }
-.intro h2{font-size:1.8rem}
+.intro h2{
+  font-size:1.8rem;
+}
 .grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
@@ -113,37 +166,82 @@ main{padding:58px 0 80px}
   background:#fff;
   border-radius:5px;
 }
+
 footer{
   border-top:1px solid #e2e7ec;
-  padding:28px 0;
+  padding:35px 0;
   color:var(--muted);
   font-size:.9rem;
 }
 .footer-inner{
   display:flex;
   justify-content:space-between;
-  align-items:center;
-  gap:15px;
+  align-items:flex-start;
+  gap:30px;
   flex-wrap:wrap;
 }
-.footer-link{
+.footer-title{
+  font-size:1rem;
+  font-weight:700;
+  color:var(--ink);
+  margin:0 0 12px;
+}
+.footer-links{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px 22px;
+}
+.footer-links a{
+  color:var(--accent);
+  text-decoration:none;
+  font-weight:600;
+}
+.footer-links a:hover{
+  text-decoration:underline;
+}
+.footer-bottom{
+  margin-top:25px;
+  padding-top:20px;
+  border-top:1px solid #e2e7ec;
+}
+.footer-bottom a{
   color:var(--accent);
   font-weight:600;
   text-decoration:none;
 }
-.footer-link:hover{
+.footer-bottom a:hover{
   text-decoration:underline;
 }
+
 @media(max-width:700px){
-  .grid{grid-template-columns:1fr}
-  .hero{padding:60px 0}
-  main{padding:40px 0}
-  .header-inner,.footer-inner{
+  .grid{
+    grid-template-columns:1fr;
+  }
+  .hero{
+    padding:60px 0;
+  }
+  main{
+    padding:40px 0;
+  }
+  .header-inner,
+  .footer-inner{
     flex-direction:column;
     align-items:flex-start;
   }
-  .brand{padding-bottom:0}
-  .header-link{padding-bottom:18px}
+  .brand{
+    padding-bottom:0;
+  }
+  .header-nav{
+    padding-bottom:20px;
+  }
+  .footer-links{
+    grid-template-columns:1fr;
+  }
+  .dropdown-menu{
+    right:auto;
+    left:0;
+    max-width:85vw;
+  }
 }
 </style>
 </head>
@@ -155,24 +253,49 @@ footer{
   <div class="wrap header-inner">
     <div class="brand">traveleasytrips.com</div>
 
-    <a
-      class="header-link"
-      href="https://www.altroconsumo.it/reclamare/i-miei-reclami/dettagli-reclamo/-E2-9C-88-E3-80-8Egu-C3-ADa-aerom-C3-A9xico-C2-AE-respuesta-r/53abf4c546f0162f83"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      External Travel Complaint Resource
-    </a>
+    <nav class="header-nav" aria-label="Main navigation">
+
+      <a href="#home">Home</a>
+      <a href="#documents">External Documents</a>
+
+      <!-- SCRIBD DOCUMENT DROPDOWN -->
+      <details class="dropdown">
+        <summary>View Documents</summary>
+
+        <div class="dropdown-menu">
+          <a href="https://www.scribd.com/document/1098878643/Wofgvv-6-pdf" target="_blank" rel="noopener noreferrer">Document 1</a>
+          <a href="https://www.scribd.com/document/1098878647/Wofgvv-3-pdf" target="_blank" rel="noopener noreferrer">Document 2</a>
+          <a href="https://www.scribd.com/document/1098878653/Wofgvv-2-pdf" target="_blank" rel="noopener noreferrer">Document 3</a>
+          <a href="https://www.scribd.com/document/1098878639/Wofgvv-1-pdf" target="_blank" rel="noopener noreferrer">Document 4</a>
+          <a href="https://www.scribd.com/document/1098878652/UMP-79-compressed-pdf" target="_blank" rel="noopener noreferrer">Document 5</a>
+          <a href="https://www.scribd.com/document/1098878642/UMP-78-compressed-pdf" target="_blank" rel="noopener noreferrer">Document 6</a>
+          <a href="https://www.scribd.com/document/1098878641/UMP-77-compressed-pdf" target="_blank" rel="noopener noreferrer">Document 7</a>
+          <a href="https://www.scribd.com/document/1098878651/UMP-76-compressed-pdf" target="_blank" rel="noopener noreferrer">Document 8</a>
+        </div>
+      </details>
+
+      <!-- ALTROCONSUMO LINK -->
+      <a
+        href="https://www.altroconsumo.it/reclamare/i-miei-reclami/dettagli-reclamo/-E2-9C-88-E3-80-8Egu-C3-ADa-aerom-C3-A9xico-C2-AE-respuesta-r/53abf4c546f0162f83"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        External Complaint Resource
+      </a>
+
+    </nav>
   </div>
 </header>
 
 <!-- HERO -->
-<div class="hero">
+<div class="hero" id="home">
   <div class="wrap">
     <div class="eyebrow">
       Travel information &amp; planning
     </div>
+
     <h1>Your next trip starts with a plan</h1>
+
     <p>
       Simple travel preparation for smoother journeys.
     </p>
@@ -181,8 +304,10 @@ footer{
 
 <!-- MAIN CONTENT -->
 <main class="wrap">
+
   <div class="intro">
     <h2>Travel Easy Trips</h2>
+
     <p>
       Useful reminders and practical information to help
       you prepare for your journey. Review the details
@@ -229,24 +354,55 @@ footer{
       or official authority before traveling.
     </p>
   </aside>
+
 </main>
 
 <!-- FOOTER -->
-<footer>
-  <div class="wrap footer-inner">
-    <div>
-      &copy; 2026 traveleasytrips.com
-      &middot; Informational content only.
+<footer id="documents">
+  <div class="wrap">
+
+    <div class="footer-inner">
+
+      <div>
+        <h3 class="footer-title">traveleasytrips.com</h3>
+        <p>
+          Independent travel information and
+          trip preparation resources.
+        </p>
+      </div>
+
+      <div>
+        <h3 class="footer-title">External Documents</h3>
+
+        <nav class="footer-links" aria-label="External documents">
+          <a href="https://www.scribd.com/document/1098878643/Wofgvv-6-pdf" target="_blank" rel="noopener noreferrer">Document 1</a>
+          <a href="https://www.scribd.com/document/1098878647/Wofgvv-3-pdf" target="_blank" rel="noopener noreferrer">Document 2</a>
+          <a href="https://www.scribd.com/document/1098878653/Wofgvv-2-pdf" target="_blank" rel="noopener noreferrer">Document 3</a>
+          <a href="https://www.scribd.com/document/1098878639/Wofgvv-1-pdf" target="_blank" rel="noopener noreferrer">Document 4</a>
+          <a href="https://www.scribd.com/document/1098878652/UMP-79-compressed-pdf" target="_blank" rel="noopener noreferrer">Document 5</a>
+          <a href="https://www.scribd.com/document/1098878642/UMP-78-compressed-pdf" target="_blank" rel="noopener noreferrer">Document 6</a>
+          <a href="https://www.scribd.com/document/1098878641/UMP-77-compressed-pdf" target="_blank" rel="noopener noreferrer">Document 7</a>
+          <a href="https://www.scribd.com/document/1098878651/UMP-76-compressed-pdf" target="_blank" rel="noopener noreferrer">Document 8</a>
+        </nav>
+      </div>
+
     </div>
 
-    <a
-      class="footer-link"
-      href="https://www.altroconsumo.it/reclamare/i-miei-reclami/dettagli-reclamo/-E2-9C-88-E3-80-8Egu-C3-ADa-aerom-C3-A9xico-C2-AE-respuesta-r/53abf4c546f0162f83"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      External Travel Complaint Resource
-    </a>
+    <div class="footer-bottom">
+      <p>
+        &copy; 2026 traveleasytrips.com
+        &middot; Informational content only.
+      </p>
+
+      <a
+        href="https://www.altroconsumo.it/reclamare/i-miei-reclami/dettagli-reclamo/-E2-9C-88-E3-80-8Egu-C3-ADa-aerom-C3-A9xico-C2-AE-respuesta-r/53abf4c546f0162f83"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        External Travel Complaint Resource
+      </a>
+    </div>
+
   </div>
 </footer>
 
