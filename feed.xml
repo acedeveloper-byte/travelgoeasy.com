@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+     xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Travel Trips</title>
+        <link>https://www.traveleasytrips.com/</link>
+        <description>Latest travel information and updates</description>
+        <language>en-us</language>
+
+        <atom:link
+            rel="hub"
+            href="https://pubsubhubbub.appspot.com/"/>
+
+        <atom:link
+            rel="self"
+            href="https://www.traveleasytrips.com/feed.xml"
+            type="application/rss+xml"/>
+
+        <item>
+            <title>Reservation Information Guide</title>
+            <link>https://colab.research.google.com/drive/1HzFdOHVOYtbHnVoYfOKETSYfCoRlNIuo?usp=sharing</link>
+            <guid isPermaLink="true">https://colab.research.google.com/drive/1HzFdOHVOYtbHnVoYfOKETSYfCoRlNIuo?usp=sharing</guid>
+            <description>Information about flight reservation procedures.</description>
+        </item>
+
+    </channel>
+</rss>
